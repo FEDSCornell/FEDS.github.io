@@ -1,6 +1,6 @@
 # FEDS SQL tables
 
-| TABLE_CATALOG | TABLE_SCHEMA   | TABLE_NAME                                       | TABLE_TYPE |
+| Database Name | Table Schema   | Table Name                                       | Table Type |
 |---------------|----------------|--------------------------------------------------|------------|
 | AgCensus      | nass           | QuickStatsCrops                                  | BASE TABLE |
 | AgCensus      | eCOA97_12      | TURKEYS_P                                        | VIEW       |
