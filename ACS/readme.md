@@ -1,5 +1,37 @@
 
+
+
+
 # American Community Survey (ACS)
+
+## Annual Age by Sex at the county level (2010 - 2017):
+### Table name: PEPAGESEX
+
+#### The table can be found from:
+[https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=PEP_2017_PEPAGESEX&prodType=table](https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=PEP_2017_PEPAGESEX&prodType=table "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=PEP_2017_PEPAGESEX&prodType=table")
+
+For one county:
+![](https://blogs.cornell.edu/jingyi/files/2020/02/ageSex.png)
+
+### Processed data
+
+county, state fips
+
+
+https://www.dropbox.com/s/db6jvqz7qj8mzyq/AgeSex10To17.xlsx?dl=0
+C:\Users\jing\Dropbox\Box\FEDSshare\Data\FEDS.github.io\ACS\AgeSex
+
+
+## Other
+### Table list:
+[https://www.dropbox.com/s/ybkooqj3ub3egve/2018_DataProductList.xlsx?dl=0](https://www.dropbox.com/s/ybkooqj3ub3egve/2018_DataProductList.xlsx?dl=0 "https://www.dropbox.com/s/ybkooqj3ub3egve/2018_DataProductList.xlsx?dl=0")
+tools to create/find tables:
+[https://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml?refresh=t](https://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml?refresh=t "https://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml?refresh=t")
+
+
+B15002_co
+[https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?src=bkmk](https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?src=bkmk "data")
+
 use this table:
 https://data.census.gov/cedsci/table?g=0100000US.050000&tid=ACSDT5Y2017.B01001&vintage=2018&hidePreview=true&t=%3A%3A%3A%3A%3A%3A%3A%3A%3A%3A&y=2017
 
