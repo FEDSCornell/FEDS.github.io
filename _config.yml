@@ -1,3 +1,4 @@
 theme: jekyll-theme-merlot
-title: [The title of your site]
-description: [A short description of your site's purpose]
+title: [Food Environment Data System]
+description: [USDA-ERS & Cornell]
+show_downloads: ["true"]
