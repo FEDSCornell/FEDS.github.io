@@ -1,2 +1,21 @@
+# American Community Survey (ACS) Age by Sex 
 
-test
+This FEDS table shows age by sex at the county level. It is created based on ACS PEPAGESEX table. 
+
+Annual Estimates of the Resident Population for Selected Age Groups by Sex for the United States, States, Counties, and Puerto Rico Commonwealth and Municipios: April 1, 2010 to July 1, 2017
+
+Notes:
+The estimates are based on the 2010 Census and reflect changes to the April 1, 2010
+population due to the Count Question Resolution program and geographic program revisions.
+Median age is calculated based on single year of age. For population estimates methodology
+statements, see 
+http://www.census.gov/programs-surveys/popest/technical-documentation/methodology.html.
+
+
+The 6,222 people in Bedford city, Virginia, which was an independent city as of the 2010 Census, are not included in the April 1, 2010 Census enumerated population presented in the county estimates. In July 2013, the legal status of Bedford changed from a city to a town and it became dependent within (or part of) Bedford County, Virginia. This population of Bedford town is now included in the April 1, 2010 estimates base and all July 1 estimates for Bedford County. Because it is no longer an independent city, Bedford town is not listed in this table. As a result, the sum of the April 1, 2010 census values for Virginia counties and independent cities does not equal the 2010 Census count for Virginia, and the sum of April 1, 2010 census values for all counties and independent cities in the United States does not equal the 2010 Census count for the United States. Substantial geographic changes to counties can be found on the Census Bureau website at http://www.census.gov/geo/reference/county-changes.html.
+
+
+Suggested Citation: 
+Annual Estimates of the Resident Population for Selected Age Groups by Sex for the United States, States, Counties and Puerto Rico Commonwealth and Municipios: April 1, 2010 to July 1, 2017 
+Source: U.S. Census Bureau, Population Division 
+Release Date: June 2018
