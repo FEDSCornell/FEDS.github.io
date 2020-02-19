@@ -22,6 +22,27 @@ Release Date: June 2018
 
 ## Groups:
 
+| Number | Age Range         |
+|--------|-------------------|
+| 1      | Under 5 years     |
+| 2      | 5 to 9 years      |
+| 3      | 10 to 14 years    |
+| 4      | 15 to 19 years    |
+| 5      | 20 to 24 years    |
+| 6      | 25 to 29 years    |
+| 7      | 30 to 34 years    |
+| 8      | 35 to 39 years    |
+| 9      | 40 to 44 years    |
+| 10     | 45 to 49 years    |
+| 11     | 50 to 54 years    |
+| 12     | 55 to 59 years    |
+| 13     | 60 to 64 years    |
+| 14     | 65 to 69 years    |
+| 15     | 70 to 74 years    |
+| 16     | 75 to 79 years    |
+| 17     | 80 to 84 years    |
+| 18     | 85 years and over |
+
 ## Python code:
 [https://www.dropbox.com/s/nikj82k3fl3u9pj/AgeSex.py?dl=0](https://www.dropbox.com/s/nikj82k3fl3u9pj/AgeSex.py?dl=0 "https://www.dropbox.com/s/nikj82k3fl3u9pj/AgeSex.py?dl=0")
 
