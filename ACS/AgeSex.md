@@ -1,10 +1,10 @@
 # American Community Survey (ACS) Age by Sex 
 
-This FEDS table shows age by sex at the county level. It is created based on ACS PEPAGESEX table. 
+This FEDS data table shows population by age and sex at the county level. It is created based on ACS PEPAGESEX table. 
 
 Annual Estimates of the Resident Population for Selected Age Groups by Sex for the United States, States, Counties, and Puerto Rico Commonwealth and Municipios: April 1, 2010 to July 1, 2017
 
-Notes:
+## Notes:
 The estimates are based on the 2010 Census and reflect changes to the April 1, 2010
 population due to the Count Question Resolution program and geographic program revisions.
 Median age is calculated based on single year of age. For population estimates methodology
