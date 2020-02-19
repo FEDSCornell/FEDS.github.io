@@ -1,1 +1,4 @@
-theme: jekyll-theme-cayman
+theme: jekyll-theme-merlot
+title: [Food Environment Data System]
+description: [USDA-ERS & Cornell]
+show_downloads: ["false"]
