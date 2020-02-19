@@ -20,7 +20,7 @@ Annual Estimates of the Resident Population for Selected Age Groups by Sex for t
 Source: U.S. Census Bureau, Population Division 
 Release Date: June 2018
 
-## Groups:
+## Age Groups:
 
 | Number | Age Range         |
 |--------|-------------------|
