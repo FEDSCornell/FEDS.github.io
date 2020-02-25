@@ -1428,6 +1428,60 @@
 | OECD | OECD | NationalAccount_T40_SelectPCE | VIEW |
 | OECD | OECD | NationalAccount_T43_SelectPCE | VIEW |
 | OECD | OECD | GFD_FnTAH_TRADEnTRAN_SHRofMARGIN | VIEW |
+| ReportServer$FEDSREPORT | BM02  | HsldWtr_flowsByFDTableNum_2002 | BASE TABLE |   |
+| ReportServer$FEDSREPORT | BM02  | wtr_flowsByFDTableNum_2002     | BASE TABLE |   |
+| ReportServer$FEDSREPORT | BM07  | HsldWtr_flowsByFDTableNum_2007 | BASE TABLE |   |
+| ReportServer$FEDSREPORT | BM07  | wtr_flowsByFDTableNum_2007     | BASE TABLE |   |
+| ReportServer$FEDSREPORT | BM12  | HsldWtr_flowsByFDTableNum_2012 | BASE TABLE |   |
+| ReportServer$FEDSREPORT | BM12  | wtr_flowsByFDTableNum_2012     | BASE TABLE |   |
+| ReportServer$FEDSREPORT | BM97  | HsldWtr_flowsByFDTableNum_1997 | BASE TABLE |   |
+| ReportServer$FEDSREPORT | BM97  | wtr_flowsByFDTableNum_1997     | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | ActiveSubscriptions            | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | Batch                          | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | CachePolicy                    | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | Catalog                        | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | ChunkData                      | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | ChunkSegmentMapping            | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | ConfigurationInfo              | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | CountyWater                    | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | DataSets                       | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | DataSource                     | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | DBUpgradeHistory               | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | Event                          | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | ExecutionLog                   | VIEW       |   |
+| ReportServer$FEDSREPORT | dbo   | ExecutionLog2                  | VIEW       |   |
+| ReportServer$FEDSREPORT | dbo   | ExecutionLog3                  | VIEW       |   |
+| ReportServer$FEDSREPORT | dbo   | ExecutionLogStorage            | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | ExtendedDataSets               | VIEW       |   |
+| ReportServer$FEDSREPORT | dbo   | ExtendedDataSources            | VIEW       |   |
+| ReportServer$FEDSREPORT | dbo   | Favorites                      | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | History                        | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | Keys                           | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | ModelDrill                     | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | ModelItemPolicy                | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | ModelPerspective               | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | Notifications                  | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | Policies                       | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | PolicyUserRole                 | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | ReportSchedule                 | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | Roles                          | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | RunningJobs                    | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | Schedule                       | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | SecData                        | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | Segment                        | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | SegmentedChunk                 | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | ServerParametersInstance       | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | ServerUpgradeHistory           | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | SnapshotData                   | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | SubscriptionResults            | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | Subscriptions                  | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | SubscriptionsBeingDeleted      | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | UpgradeInfo                    | BASE TABLE |   |
+| ReportServer$FEDSREPORT | dbo   | Users                          | BASE TABLE |   |
+| ReportServer$FEDSREPORT | ERSIO | wtr_schain_categories          | BASE TABLE |   |
+| ReportServer$FEDSREPORT | FD    | tableNames                     | BASE TABLE |   |
+| ReportServer$FEDSREPORT | fips  | co                             | BASE TABLE |   |
+| ReportServer$FEDSREPORT | nwis  | nwis18_TSV                     | BASE TABLE |   |
 | Trade | dev | 8DigitsNaicsValueWeightShare_FIPS_import | BASE TABLE |
 | Trade | dev | 8DigitsNaicsValueWeightShare_PORT_exp | BASE TABLE |
 | Trade | dev | 8DigitsNaicsValueWeightShare_PORT_imp | BASE TABLE |
