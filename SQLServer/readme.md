@@ -1428,7 +1428,7 @@
 | OECD | OECD | NationalAccount_T40_SelectPCE | VIEW |
 | OECD | OECD | NationalAccount_T43_SelectPCE | VIEW |
 | OECD | OECD | GFD_FnTAH_TRADEnTRAN_SHRofMARGIN | VIEW |
-| ReportServer$FEDSREPORT | BM02  | HsldWtr_flowsByFDTableNum_2002 | BASE TABLE |   |
+| ReportServer$FEDSREPORT | BM02  | HsldWtr_flowsByFDTableNum_2002 | BASE TABLE |The "ReportServer$FEDSREPORT" database on the FEDS sql server is a replica of the tables we have on the SQL reporting server.|
 | ReportServer$FEDSREPORT | BM02  | wtr_flowsByFDTableNum_2002     | BASE TABLE |   |
 | ReportServer$FEDSREPORT | BM07  | HsldWtr_flowsByFDTableNum_2007 | BASE TABLE |   |
 | ReportServer$FEDSREPORT | BM07  | wtr_flowsByFDTableNum_2007     | BASE TABLE |   |
