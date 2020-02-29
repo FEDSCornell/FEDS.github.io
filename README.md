@@ -10,8 +10,4 @@
 - [ACS: Age by Sex](ACS/AgeSex.md)
 - [ACS Explore](ACS/ACSExplore.md)
 
-# Test PDF files:
-
-[Geneva](Geneva.pdf)
-
 
