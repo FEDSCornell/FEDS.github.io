@@ -62,7 +62,7 @@ pd.set_option('display.max_row', 1000)
 pd.set_option('display.width', None)
 pd.set_option('display.max_colwidth', -1)
 
-workingDir = "C:\\Users\\jing\\Dropbox\\Box\\FEDSshare\\Data\\NassQuickStats\\"
+workingDir = "C:\\Users\\jing\\Dropbox\\BoxOld\\FEDSshare\\Data\\NassQuickStats\\"
 sys.path.append(workingDir)
 # in case the dependency is edited:
 importlib.reload(FEDS)
@@ -71,7 +71,7 @@ importlib.reload(FEDS)
 # print out available datasets:
 NassOpt = FEDS.PrintOption(url2, url3)
 NassNames = input("Enter Nass Download File Name: ")
-NassNames = sys.argv[1]
+# NassNames = sys.argv[1]
 print(sys.argv)
 sqltablename = "NASS_QuickStats_"+str(NassNames.capitalize())
 #

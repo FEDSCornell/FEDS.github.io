@@ -1,3 +1,8 @@
+# This Python ETL script is developed for the USDA-ERS & Cornell Food Environment Data Project.
+# copyright: Jing Yi, jy348@cornell.edu
+
+# NassFEDSfn.py contains user defined functions.
+
 from ftplib import FTP
 import pandas as pd
 import sys
