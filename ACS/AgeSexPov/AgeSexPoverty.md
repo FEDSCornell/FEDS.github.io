@@ -1,10 +1,10 @@
 # American Community Survey (ACS) Population by Age by Sex by Poverty Level 
 
-- The SQL table [acs].[AgeSexPov] contains population data by Age by Sex by Poverty Level at the county level. It is created based on ACS B17001 table.  
+- The SQL table **[acs].[AgeSexPov]** contains population data by Age by Sex by Poverty Level at the county level. It is created based on ACS B17001 table.  
 
-- The SQL table [acsLookup].[AgeSexPov] is the lookup table of the [acs].[AgeSexPov] table. The description of each column names is also available in the "Variable Descriptions" section of this document. 
+- The SQL table **[acsLookup].[AgeSexPov]** is the lookup table of the [acs].[AgeSexPov] table. The description of each column names is also available in the "Variable Descriptions" section of this document. 
 
-- The SQL table [acs].[AgeSexPov] includes data in years 2012 - 2017. Each year's data were downloaded form [U.S. Census Bureau](https://data.census.gov/cedsci/ "U.S. Census Bureau"):
+- The SQL table **[acs].[AgeSexPov]** includes data in years 2012 - 2017. Each year's data were downloaded form [U.S. Census Bureau](https://data.census.gov/cedsci/ "U.S. Census Bureau"):
 
 			
 		| Year in [acs].[AgeSexPov] | American Community Survey 5-Year Estimates           |
