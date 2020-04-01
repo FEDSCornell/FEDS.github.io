@@ -1,6 +1,6 @@
 # Online Documentation of FEDS Data Projects
-
-
+<!-- This readme file is also deployed as a GitHub Page: https://fedscornell.github.io/Food-Environment-Data-System/  -->
+<!-- This repo is created for the FEDS & Cornell Food Environment Data Products -->
 ## [SQLServer](SQLServer)
 
 
