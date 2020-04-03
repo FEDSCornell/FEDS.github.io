@@ -8,3 +8,4 @@
 
 [https://www.dropbox.com/s/3cyo60yw6zq350v/USGSWater.py?dl=0](https://www.dropbox.com/s/3cyo60yw6zq350v/USGSWater.py?dl=0 "https://www.dropbox.com/s/3cyo60yw6zq350v/USGSWater.py?dl=0")
 
+The python script shows how FEDS team developed the **[USGS].[nwuip2015].[USCO2015_DD]** and **[USGS].[nwuip2015].[USCO2015]** tables from the source data **usco2015v2.0.xlsx**. 
