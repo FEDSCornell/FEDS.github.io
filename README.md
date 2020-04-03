@@ -11,4 +11,5 @@
 - [ACS: Population by Age by Sex](ACS/AgeSex.md)
 - [ACS Explore](ACS/ACSExplore.md)
 
-
+## Water Use Update
+- [Water Use Update Readme file](WaterUseUpdate/WaterUseUpdate.md)
