@@ -64,3 +64,7 @@ cleaned data
 2. use the SQL table created based on the excel file
 3. compare with downloaded txt files
 
+
+differences between the excel file and the web interface:
+
+![](https://i.imgur.com/aauZmI3.png)
