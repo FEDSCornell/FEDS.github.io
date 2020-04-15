@@ -55,7 +55,19 @@ cleaned data
 	5. **[nwuip2015].[USCO2015_excel]**: 
 2015 water data based on the excel file 
 
+## Variable Update:
 
+### 1. New variables:
+2015 USGS water data contains new variables
+
+### 2. Changed variable names:
+
+
+	2015: DO-WDelv
+
+	2010: DO-TOTAL
+
+right now, in the python code, I changed "DO-WDelv" to "DO-TOTAL" in order to reuse the existing code. 
 
 
 ## Data Validation:
@@ -68,3 +80,4 @@ cleaned data
 **Differences between the excel file and the web interface:**
 
 ![](https://i.imgur.com/aauZmI3.png)
+
