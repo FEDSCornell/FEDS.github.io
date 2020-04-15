@@ -12,4 +12,4 @@
 - [ACS Explore](ACS/ACSExplore.md)
 
 ## Water Use Update
-- [Water Use Update Readme file](WaterUseUpdate/WaterUseUpdate.md)
+- [Water Use Update Readme file](WaterUseUpdate/Documentation/WaterUseUpdate.md)
