@@ -65,6 +65,6 @@ cleaned data
 3. compare with downloaded txt files
 
 
-differences between the excel file and the web interface:
+**Differences between the excel file and the web interface:**
 
 ![](https://i.imgur.com/aauZmI3.png)
