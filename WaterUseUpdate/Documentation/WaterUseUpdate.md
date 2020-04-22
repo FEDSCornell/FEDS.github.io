@@ -1,4 +1,4 @@
-# 2015 Water Update:
+# 2015 Water Update
 
 This readme file is created to document the technical steps of updating data of 2015 water use by the U.S. food system. The Food Environment Data System (FEDS) team follows Sarah Rehkamp's[ documentation](https://cornell.box.com/s/s3cr4pnjvkuux7dfv01veogdojqxt8o0 "documentation") to update the water data with technical changes. 
 
@@ -96,7 +96,7 @@ All scripts in this step are integrated into the [Python script: USGSWater2015_S
 
 ## Technical steps:
 
-### <span style="color:orange">Irrigated acres from COA </span>
+### <span style="color:orange">I. Irrigated acres from COA </span>
 
 #### 1. Created [COA17].[IrrigationData] SQL table
 
@@ -142,6 +142,42 @@ Note:
 <span style="color:blue">**Dependence**: </span> <span style="color:purple">**[COA17].[IrrigationData]** and 
 **[COA95_10].[NAICS8]** </span> 
 
+This **[COA17].[IrrigationData_Integrated]** SQL view:
+
+
+
+1. filters out the irrigated acreage records 
+2. integrate with NAICS8 information 
+3. Flagging supressed data:
+
+		[ACRES_F] = CASE WHEN [VALUE] = '(D)' THEN 1
+		ELSE 0
+
+
+
+
+
+<span style="color:red">Questions: </span>
+
+<span style="color:red">Berries: Before union with berry records from [IrrigationData], there are berry records already. 
+
+Data before union with berries and NACIS8 : [IrrigationData_integrated data before including NAICS8:](https://cornell.box.com/s/95fuzkqsre0ehi2xhoodgbbtibd3bc6e)
+
+Created using [This SQL script](https://cornell.box.com/s/r2c74fmre7smuws83cb1kaog6tqofujp)
+</span>
+
+
+No records returned using
+		
+		select *
+		FROM [COA17].[IrrigationData]
+		where year = '2017'
+		and COMMODITY_DESC = 'berry totals'
+		and PRODN_PRACTICE_DESC IN ('IRRIGATED', 'IN THE OPEN IRRIGATED')
+		and AGG_LEVEL_DESC = 'national'
+		and unit_desc = 'ACRES'
+		and   try_convert(float,[VALUE]) is not null
+
 <span style="color:purple">**[COA95_10].[NAICS8]**:</span>
 
 
@@ -154,7 +190,7 @@ Note:
 [https://www.census.gov/manufacturing/numerical_list/](https://www.census.gov/manufacturing/numerical_list/ "https://www.census.gov/manufacturing/numerical_list/")
 
 
-No 2017 nacis8 published. 2012 is the most recent **"NAICS-based codes"** --> no need to update the <span style="color:purple">**[COA95_10].[NAICS8]**</span>  table.
+2017 nacis8 not published yet. 2012 is the most recent **"NAICS-based codes"** --> no need to update the <span style="color:purple">**[COA95_10].[NAICS8]**</span>  table.
 
 
 
@@ -182,7 +218,7 @@ No 2017 nacis8 published. 2012 is the most recent **"NAICS-based codes"** --> no
 		Changed view names in the original queries. 
 	
 	
-## <span style="color:orange">Irrigated farms from COA </span>
+## <span style="color:orange">II. Irrigated farms from COA </span>
 
 #### 1. Create view [COA17].[IrrFarmsData]
 	
@@ -199,10 +235,14 @@ No 2017 nacis8 published. 2012 is the most recent **"NAICS-based codes"** --> no
 	a. depends on [COA17].[IrrFarmsData] 
 	b. based on the original "CreateTable_COA95_10_Census_IrrFarmsData_Enhanced.sql"
 	c. changed table and view names in the original sql query.
+	d. the enhanced table removes duplicates from the [IrrigationData_Integrated] view.
 
-## <span style="color:orange">Combining COA farms and acreage </span>
+## <span style="color:orange">III. Combining COA farms and acreage </span>
 
-#### 1. Created [COA17].[IrrDataGAMS] 
+<span style="color:blue">**Dependence**: </span> <span style="color:purple">**[COA17].[Census_IrrigationData_Enhanced]**,**[COA95_10].[Irr_UBLB_Edited]**,  **[COA95_10].[2002_Berries]**, and **[COA95_10].[NAICS8]** </span> 
+
+#### 
+1. Created [COA17].[IrrDataGAMS] 
 
 	
 	Where is the [COA95_10].[2002_Berries] ? 
@@ -224,6 +264,17 @@ select ...[ACRES]= SUM(CAST([VALUE] AS decimal(20,10) ))
 	  --,[ACRES_F] = 0
 FROM [COA17].[IrrigationData]
 
+## <span style="color:orange">IV. GAMS scripts </span>
+
+	irrCOA12model.gms
+	
+	irrCOA12modeldata.gms
+	
+	irrCOA12source.gms
+	
+	irrCOA12setsnparms.inc
+
+
 ## <span style="color:orange"> FRIS </span>
 
 Name is changed to: **2018 Irrigation and Water Management Survey**
@@ -244,9 +295,9 @@ Table 36.csv is created using the R script: **FRIS_PDF_Scraping_Table_36_2020.R*
 
 ----------
 
-# Questiosn:
+# Questions:
 
-<span style="color:red">Where was [AgCensus].[COA95_10].[AcresHarvestedData] used </span>
+
 
 <span style="color:red">NAICS8 </span>
 
@@ -344,3 +395,7 @@ it is created by:
 download whole dataset
 
 https://www.nass.usda.gov/Quick_Stats/CDQT/chapter/2/table/32/state/AL/county/003/year/2017
+
+# Other resources
+
+[FEDS SQL Server Catalog](https://fedscornell.github.io/Food-Environment-Data-System/SQLServer/)
