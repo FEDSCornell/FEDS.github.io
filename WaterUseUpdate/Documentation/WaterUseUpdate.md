@@ -1,5 +1,8 @@
-# USGS 2015 Water Update:
+# 2015 Water Update:
 
+This readme file is created to document the technical steps of updating data of 2015 water use by the U.S. food system. The Food Environment Data System (FEDS) team follows Sarah Rehkamp's[ documentation](https://cornell.box.com/s/s3cr4pnjvkuux7dfv01veogdojqxt8o0 "documentation") to update the water data with technical changes. 
+
+# <span style="color:blue">Step 1 & 2</span>
 
 
 ## Data Source:
@@ -18,7 +21,7 @@
 
 ## Python script:
 
-[https://www.dropbox.com/s/yuv79udqhbqu71q/USGSWater_Jing.py?dl=0](https://www.dropbox.com/s/yuv79udqhbqu71q/USGSWater_Jing.py?dl=0 "https://www.dropbox.com/s/yuv79udqhbqu71q/USGSWater_Jing.py?dl=0")
+[https://cornell.box.com/s/nihol1fmsz0cdtyfbzaebc6dz3g8erxq](https://cornell.box.com/s/nihol1fmsz0cdtyfbzaebc6dz3g8erxq)
 
 
 The python script is developed by the FEDS team to 
@@ -63,7 +66,7 @@ cleaned data
 ### 2. Changed variable names:
 
 
-	2015: DO-WDelv
+	2015: DO-WDelv, the definition is the same as the variable "DO-TOTAL" in 2010. So in the Python script, I changed this variable to "DO-TOTAL" to facilitate scripts development. 
 
 	2010: DO-TOTAL
 
@@ -81,3 +84,206 @@ right now, in the python code, I changed "DO-WDelv" to "DO-TOTAL" in order to re
 
 ![](https://i.imgur.com/aauZmI3.png)
 
+
+
+# <span style="color:blue">Step 3 </span>
+
+## Code:
+
+All scripts in this step are integrated into the [Python script: USGSWater2015_Step3](https://cornell.box.com/s/k0v5x9xbt26n5c6naas4r1ep8y76n7e0).
+
+## Technical steps:
+
+### <span style="color:orange">Irrigated acres from COA </span>
+
+#### 1. Created [COA17].[IrrigationData] SQL table
+	
+	a. used the NASS DB that the FEDS team created  
+	
+	b. the sql query in incorporated into the Python script. 
+	
+	c. the sql query is developed based on "COA95_10_IrrigationData_NASSQuickStats_sqlprod01_Query_20171127.sql" 
+	
+	d. changed "year" in the original sql query to 2017.
+	
+	Note: This table only includes 2017 records
+
+
+#### 2. Created \[COA17].[AcresHarvestedData] SQL table 
+
+	a. using \[QSData].[NASS_QuickStats_Census] and 
+	
+	b. the SQL query in the Python script is developed based on "COA95_10_AreaHarvestedData_NASSQuickStats_sqlprod01_Query_20171127.sql"
+	
+	c. changed "year" in the original sql query to 2017.
+	
+	Note: This SQL table only includes 2017 records
+
+#### 3. Created \[COA17].[IrrigationData_Integrated]  SQL view 
+	
+	a. this is created based on the [COA17].[IrrigationData] and [COA95_10].[NAICS8] SQL tables
+	
+	b. the sql query in the Python script is developed based on the [COA95_10].[IrrigationData_Integrated] SQL view
+	
+	Note: 
+	
+	1). made changes in the queries as SQL Server 2012 is more restrictive about data types. It's harder to convert varchar to decimals. In the [IrrigationData] SQL table, [value] is varchar with a lot of nulls. I included "try_convert" to deal with nulls. 
+	
+	2). This SQL query only uses 2017 records. 
+
+#### 4. Created \[COA17].[Census_IrrigationData_Enhanced]  SQL table 
+		
+	a. this is created based on the [COA17].[IrrigationData_Integrated] SQL view  
+		
+	b. the sql query in the Python script is created based on the original "CreateTable_COA95_10_Census_IrrigationData_Enhanced.sql" with changes. 
+	
+	Changes: 
+	
+		The original CreateTable_COA95_10_Census_IrrigationData_Enhanced.sql is broken into two pieces in the Python script: 
+		<1>. create the SQL table; and 
+		<2> insert data into the enhanced sql table. 
+		
+		Changed view names in the original queries. 
+	
+	
+## <span style="color:orange">Irrigated farms from COA </span>
+
+#### 1. Create view [COA17].[IrrFarmsData]
+	
+	a. this view depends on [COA17].[IrrigationData] and [COA95_10].[NAICS8].
+	
+	b. developed the sql query based on the [AgCensus].[COA95_10].[IrrigationData] SQL view
+	
+	c. only includes 2017 records in the query
+	
+	d. added the "try_convert(float,[VALUE])" clause 
+	
+#### 2. Create [COA95_10].[Census_IrrFarmsData_Enhanced] SQL table <span style="color:orange"> running in SSMS NOW</span>
+
+	a. depends on [COA17].[IrrFarmsData] 
+	b. based on the original "CreateTable_COA95_10_Census_IrrFarmsData_Enhanced.sql"
+	c. changed table and view names in the original sql query.
+
+## <span style="color:orange">Combining COA farms and acreage </span>
+
+#### 1. Created [COA17].[IrrDataGAMS] 
+
+	
+	Where is the [COA95_10].[2002_Berries] ? 
+	
+
+#### 2. Create view [COA95_10].[Irr_UBLB_Edited] in my local. In the FEDS server, there is no need to recreate this SQL view. But on my local, i need to replicate this view to create the [IrrDataGAMS] sql table. 
+
+
+
+In [AgCensus].[COA95_10].[IrrigationData]:
+
+change [LOCATION_DESC] \[varchar](50) NULL to 
+[LOCATION_DESC] \[varchar](500) NULL,
+
+
+[value] is varchar in  [COA17].[IrrigationData]. This causes problems in sql queries such as:
+
+select ...[ACRES]= SUM(CAST([VALUE] AS decimal(20,10) )) 
+	  --,[ACRES_F] = 0
+FROM [COA17].[IrrigationData]
+
+
+# Questiosn:
+
+<span style="color:red">NAICS8 </span>
+
+**"NAICS-based codes"**
+
+2012 is the most recent **"NAICS-based codes"** --> no need to update the nacis8 table, right?
+
+
+https://www.census.gov/eos/www/naics/faqs/faqs.html
+
+https://www.census.gov/eos/www/naics/downloadables/downloadables.html
+
+https://www.census.gov/manufacturing/numerical_list/
+
+no 2017 nacis8 available 
+
+**2017 to 2012 NAICS Concordance:**
+https://www.census.gov/eos/www/naics/concordances/concordances.html
+
+
+<span style="color:red">CREATE VIEW [COA17].[IrrDataGAMS] </span>
+
+
+
+
+<span style="color:red">haven't conducted this change in the concordance table:</span>
+
+	2015: DO-WDelv, the definition is the same as the variable "DO-TOTAL" in 2010. So in the Python script, I changed this variable to "DO-TOTAL" to facilitate scripts development. 
+
+	2010: DO-TOTAL
+
+
+<span style="color:red">why there are suffix "_2" in "[IrrFarmsData_2]" and "[Census_IrrFarmsData_Enhanced_2]" </span>
+
+
+<span style="color:red">Berries</span>
+https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_1_US/usappxb.pdf
+
+previous: 
+Berries - Harvested for Sale and Irrigated: 2002 and 1997
+[http://usda.mannlib.cornell.edu/usda/AgCensusImages/2002/01/40/1704/Table-32.pdf](http://usda.mannlib.cornell.edu/usda/AgCensusImages/2002/01/40/1704/Table-32.pdf "http://usda.mannlib.cornell.edu/usda/AgCensusImages/2002/01/40/1704/Table-32.pdf")
+
+2017 and 2012 irrigated berries:
+
+[https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_2_County_Level/California/st06_2_0032_0032.pdf](https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_2_County_Level/California/st06_2_0032_0032.pdf "https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_2_County_Level/California/st06_2_0032_0032.pdf")
+
+
+link for AL:
+[https://www.nass.usda.gov/Quick_Stats/CDQT/chapter/2/table/32/state/AL/year/2017](https://www.nass.usda.gov/Quick_Stats/CDQT/chapter/2/table/32/state/AL/year/2017 "https://www.nass.usda.gov/Quick_Stats/CDQT/chapter/2/table/32/state/AL/year/2017")
+
+
+
+
+Aronia berries and Elderberries are new
+items for 2017. In 2012 and previous censuses, data
+were included in Other berries. A new summarization
+of Blueberries, all for 2017, which combines
+Blueberries, tame and Blueberries, wild data was
+added. Raspberries, other was added as an additional
+breakout for the Raspberries, all summarization in
+2017. Berry acreage for 2017 was collected as bearing
+age and nonbearing age, similar to all other fruit
+crops; however, in 2012, data were collected as
+harvested and not harvested acres. 
+
+
+berries by acres: 2017
+
+[https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_1_US/st99_1_0038_0038.pdf](https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_1_US/st99_1_0038_0038.pdf "https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_1_US/st99_1_0038_0038.pdf")
+
+CA:
+
+[https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_2_County_Level/California/st06_2_0032_0032.pdf](https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_2_County_Level/California/st06_2_0032_0032.pdf "https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_2_County_Level/California/st06_2_0032_0032.pdf")
+
+**state level:**
+
+table 35:  2018 and 2013 berries at the state level
+
+[https://www.nass.usda.gov/Publications/AgCensus/2017/Online_Resources/Farm_and_Ranch_Irrigation_Survey/fris_2_0035_0035.pdf](https://www.nass.usda.gov/Publications/AgCensus/2017/Online_Resources/Farm_and_Ranch_Irrigation_Survey/fris_2_0035_0035.pdf "https://www.nass.usda.gov/Publications/AgCensus/2017/Online_Resources/Farm_and_Ranch_Irrigation_Survey/fris_2_0035_0035.pdf")
+
+**state and county level :**
+
+2017
+
+[Table 32. Land in Berries: 2017 and 2012](Table 32. Land in Berries: 2017 and 2012 "https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_2_County_Level/California/st06_2_0032_0032.pdf")
+
+it is created by:
+
+[https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_2_County_Level/California/](https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_2_County_Level/California/ "https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_2_County_Level/California/")
+
+
+
+[https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_2_County_Level/California/st06_2_0033_0033.pdf](https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_2_County_Level/California/st06_2_0033_0033.pdf "https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_2_County_Level/California/st06_2_0033_0033.pdf")
+
+download whole dataset
+
+https://www.nass.usda.gov/Quick_Stats/CDQT/chapter/2/table/32/state/AL/county/003/year/2017
