@@ -69,8 +69,10 @@ cleaned data
 	2015: DO-WDelv, the definition is the same as the variable "DO-TOTAL" in 2010. So in the Python script, I changed this variable to "DO-TOTAL" to facilitate scripts development. 
 
 	2010: DO-TOTAL
+	
+	Right now, in the python code, I changed "DO-WDelv" to "DO-TOTAL" in order to reuse the existing code. 
 
-right now, in the python code, I changed "DO-WDelv" to "DO-TOTAL" in order to reuse the existing code. 
+
 
 
 ## Data Validation:
@@ -97,39 +99,73 @@ All scripts in this step are integrated into the [Python script: USGSWater2015_S
 ### <span style="color:orange">Irrigated acres from COA </span>
 
 #### 1. Created [COA17].[IrrigationData] SQL table
+
+<span style="color:red">Need to re-run the python script to update</span>
+
+
 	
-	a. used the NASS DB that the FEDS team created  
+[**Dependence**: QSData.NASS_QuickStats_Census that the FEDS team created based on NASS data](https://fedscornell.github.io/Food-Environment-Data-System/NASS/). 
+
+	FROM QSData.NASS_QuickStats_Census
+	where [PRODN_PRACTICE_DESC] LIKE '%IRRIGATED%'
+	and [YEAR]='2017'
+
+Updated the census 2017 data on Apr 21, 2020 to reflect the most recent NASS records. 
+
+	a. the sql query is incorporated into the Python script. 
 	
-	b. the sql query in incorporated into the Python script. 
+	b. the sql query is developed based on "COA95_10_IrrigationData_NASSQuickStats_sqlprod01_Query_20171127.sql" 
 	
-	c. the sql query is developed based on "COA95_10_IrrigationData_NASSQuickStats_sqlprod01_Query_20171127.sql" 
-	
-	d. changed "year" in the original sql query to 2017.
+	c. changed "year" in the original sql query to 2017.
 	
 	Note: This table only includes 2017 records
 
 
+
 #### 2. Created \[COA17].[AcresHarvestedData] SQL table 
 
-	a. using \[QSData].[NASS_QuickStats_Census] and 
+[**Dependence**: QSData.NASS_QuickStats_Census that the FEDS team created based on NASS data](https://fedscornell.github.io/Food-Environment-Data-System/NASS/). 
+
+	  FROM  QSData.NASS_QuickStats_Census
+	  WHERE [STATISTICCAT_DESC] = 'AREA HARVESTED'
+	  AND [YEAR] IN ('2017')
+	  AND [AGG_LEVEL_DESC] IN ('COUNTY','NATIONAL','STATE')
+  
+Note:
+
+	a. the SQL query in the Python script is developed based on "COA95_10_AreaHarvestedData_NASSQuickStats_sqlprod01_Query_20171127.sql"
 	
-	b. the SQL query in the Python script is developed based on "COA95_10_AreaHarvestedData_NASSQuickStats_sqlprod01_Query_20171127.sql"
-	
-	c. changed "year" in the original sql query to 2017.
-	
-	Note: This SQL table only includes 2017 records
+	b. changed "year" in the original sql query to 2017, so this SQL table only includes 2017 records
 
 #### 3. Created \[COA17].[IrrigationData_Integrated]  SQL view 
 	
-	a. this is created based on the [COA17].[IrrigationData] and [COA95_10].[NAICS8] SQL tables
+<span style="color:blue">**Dependence**: </span> <span style="color:purple">**[COA17].[IrrigationData]** and 
+**[COA95_10].[NAICS8]** </span> 
+
+<span style="color:purple">**[COA95_10].[NAICS8]**:</span>
+
+
+
+
+[https://www.census.gov/eos/www/naics/faqs/faqs.html](https://www.census.gov/eos/www/naics/faqs/faqs.html "https://www.census.gov/eos/www/naics/faqs/faqs.html")
+
+[https://www.census.gov/eos/www/naics/downloadables/downloadables.html](https://www.census.gov/eos/www/naics/downloadables/downloadables.html "https://www.census.gov/eos/www/naics/downloadables/downloadables.html")
+
+[https://www.census.gov/manufacturing/numerical_list/](https://www.census.gov/manufacturing/numerical_list/ "https://www.census.gov/manufacturing/numerical_list/")
+
+
+No 2017 nacis8 published. 2012 is the most recent **"NAICS-based codes"** --> no need to update the <span style="color:purple">**[COA95_10].[NAICS8]**</span>  table.
+
+
+
 	
-	b. the sql query in the Python script is developed based on the [COA95_10].[IrrigationData_Integrated] SQL view
+	Note: the sql query of developing the [COA17].[IrrigationData_Integrated] SQL view in the Python script is developed based on the [COA95_10].[IrrigationData_Integrated] SQL view
 	
 	Note: 
 	
-	1). made changes in the queries as SQL Server 2012 is more restrictive about data types. It's harder to convert varchar to decimals. In the [IrrigationData] SQL table, [value] is varchar with a lot of nulls. I included "try_convert" to deal with nulls. 
+	1). made changes in the queries as SQL Server 2012 is more restrictive about data types. It's harder to convert varchar to decimals. In the [IrrigationData] SQL table, [value] is varchar with a lot of nulls. I apply "try_convert" to deal with nulls. 
 	
-	2). This SQL query only uses 2017 records. 
+	2). This SQL query only uses 2017 records as the dependent table [COA17].[IrrigationData] only has 2017 records. 
 
 #### 4. Created \[COA17].[Census_IrrigationData_Enhanced]  SQL table 
 		
@@ -158,7 +194,7 @@ All scripts in this step are integrated into the [Python script: USGSWater2015_S
 	
 	d. added the "try_convert(float,[VALUE])" clause 
 	
-#### 2. Create [COA95_10].[Census_IrrFarmsData_Enhanced] SQL table <span style="color:orange"> running in SSMS NOW</span>
+#### 2. Create [COA95_10].[Census_IrrFarmsData_Enhanced] SQL table <span style="color:orange"></span>
 
 	a. depends on [COA17].[IrrFarmsData] 
 	b. based on the original "CreateTable_COA95_10_Census_IrrFarmsData_Enhanced.sql"
@@ -188,8 +224,29 @@ select ...[ACRES]= SUM(CAST([VALUE] AS decimal(20,10) ))
 	  --,[ACRES_F] = 0
 FROM [COA17].[IrrigationData]
 
+## <span style="color:orange"> FRIS </span>
+
+Name is changed to: **2018 Irrigation and Water Management Survey**
+
+[https://www.nass.usda.gov/Publications/AgCensus/2017/Online_Resources/Farm_and_Ranch_Irrigation_Survey/index.php](https://www.nass.usda.gov/Publications/AgCensus/2017/Online_Resources/Farm_and_Ranch_Irrigation_Survey/index.php "All tables")
+
+
+Table 6 changed to Table 7. Irrigation by Estimated Quantity of Water Applied: 2018 and 2013
+
+Table 36.csv is created using the R script: **FRIS_PDF_Scraping_Table_36_2020.R**
+
+### Data Source
+
+[file:///C:/Users/jing/Dropbox/BoxOld/FEDSshare/Data/FEDS.github.io/WaterUseUpdate/Step3/Data/fris_csv/fris_index.htm](file:///C:/Users/jing/Dropbox/BoxOld/FEDSshare/Data/FEDS.github.io/WaterUseUpdate/Step3/Data/fris_csv/fris_index.htm "File Index")
+
+
+----------
+
+----------
 
 # Questiosn:
+
+<span style="color:red">Where was [AgCensus].[COA95_10].[AcresHarvestedData] used </span>
 
 <span style="color:red">NAICS8 </span>
 
