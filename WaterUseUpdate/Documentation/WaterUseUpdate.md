@@ -7,7 +7,6 @@ This readme file is created to document the technical steps of updating data of 
 
 ## Data Source:
 
-![](file:///C:\Users\jing\Dropbox\BoxOld\FEDSshare\Data\FEDS.github.io\WaterUseUpdate\diff.png)
 
 ### 1. EXCEl file
 
@@ -221,6 +220,8 @@ To update 2015 water use data, I need to create new NAICS8 to incorporate the ch
 		where [2017Census]='1'
 
 
+
+<span style="color:purple">[USGS].[MITERS].[NAICS8_v2017] is used to further create the  [COA17].[NAICS8] table </span>
 
 1. filters out the irrigated acreage records 
 2. integrate with NAICS8 information 
