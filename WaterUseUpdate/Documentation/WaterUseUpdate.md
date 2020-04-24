@@ -144,6 +144,82 @@ Note:
 
 This **[COA17].[IrrigationData_Integrated]** SQL view:
 
+[##### Data changes in 2017 census:](https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_1_US/usappxb.pdf)
+
+**Added items include:**
+
+• Aronia berries
+
+• Cherimoyas
+
+• Chickpeas
+
+• Coffee – first time collected in States other than
+Hawaii
+
+• Elderberries
+
+• Indian or traditional corn
+
+• Raspberries, other
+
+**Deleted items include:**
+
+• Pineapples not harvested
+
+• Sugarcane not harvested
+
+• Berry acres harvested and not harvested
+
+• Grain storage capacity
+
+**Other changes include:**
+
+• Ginger root added to the vegetable section;
+removed from the field crop section
+
+• Pineapple added to fruit, nuts, and berries section;
+removed from the field crop section
+
+• Taro root added to the vegetable section; removed
+from the field crop section
+
+• Berry acreage for 2017 was collected as bearing
+age and nonbearing age, similar to all other fruit; 
+
+**Items combined with another item(s) on the 2017
+report form that were reported individually on the
+2012 report form include:**
+
+
+• Small grain dry hay
+
+• Wild dry hay
+
+• Other tame dry hay excluding small grain hay and
+wild hay
+
+**You can also find livestock and poultry data changes from** [https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_1_US/usappxb.pdf](https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_1_US/usappxb.pdf "https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_1_US/usappxb.pdf")
+
+
+<span style="color:purple">**[COA95_10].[NAICS8]**:</span>
+
+ERS developed the special NACIS8 based on MACIS6. Description of the NACIS8 can be found from FEDS server: <span style="color:purple"> [LUT].[MITERS].[NAICS8_v2]</span>
+
+
+To update 2015 water use data, I need to create new NAICS8 to incorporate the changes. The python script also reflects the changes in the [LUT].[MITERS].[NAICS8_v3] which is developed based on [LUT].[MITERS].[NAICS8_v2]. 
+
+**Created <span style="color:purple">[USGS].[MITERS].[NAICS8_v2017]</span>**
+
+
+**Validation:**
+
+		SELECT   [NAICS8]
+		    ,[NAICS8_DESC]
+		    ,[2017Census]
+		FROM [USGS].[MITERS].[NAICS8_v2017]
+		where [2017Census]='1'
+
 
 
 1. filters out the irrigated acreage records 
@@ -178,23 +254,9 @@ No records returned using
 		and unit_desc = 'ACRES'
 		and   try_convert(float,[VALUE]) is not null
 
-<span style="color:purple">**[COA95_10].[NAICS8]**:</span>
 
 
 
-
-[https://www.census.gov/eos/www/naics/faqs/faqs.html](https://www.census.gov/eos/www/naics/faqs/faqs.html "https://www.census.gov/eos/www/naics/faqs/faqs.html")
-
-[https://www.census.gov/eos/www/naics/downloadables/downloadables.html](https://www.census.gov/eos/www/naics/downloadables/downloadables.html "https://www.census.gov/eos/www/naics/downloadables/downloadables.html")
-
-[https://www.census.gov/manufacturing/numerical_list/](https://www.census.gov/manufacturing/numerical_list/ "https://www.census.gov/manufacturing/numerical_list/")
-
-
-2017 nacis8 not published yet. 2012 is the most recent **"NAICS-based codes"** --> no need to update the <span style="color:purple">**[COA95_10].[NAICS8]**</span>  table.
-
-
-
-	
 	Note: the sql query of developing the [COA17].[IrrigationData_Integrated] SQL view in the Python script is developed based on the [COA95_10].[IrrigationData_Integrated] SQL view
 	
 	Note: 
