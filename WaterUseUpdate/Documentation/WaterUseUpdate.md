@@ -204,7 +204,7 @@ wild hay
 
 	df_naics = pd.DataFrame([['11133409','ARONIA BERRIES', '1'], ['11133410','ELDERBERRIES', '1'],['11133411','Raspberries', '1'],['95000000', 'CHERIMOYAS', '1'],['11113009', 'CHICKPEAS', '1']])
  
-![](https://www.dropbox.com/s/x33gfvq8r2p22ud/NAICS8_v2017.jpg)
+![](https://pasteboard.co/J5ZnpLU.png)
 
 <span style="color:purple">**[COA95_10].[NAICS8]**:</span>
 
