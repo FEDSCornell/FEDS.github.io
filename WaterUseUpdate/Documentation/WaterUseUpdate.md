@@ -200,6 +200,11 @@ wild hay
 
 **You can also find livestock and poultry data changes from** [https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_1_US/usappxb.pdf](https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_1_US/usappxb.pdf "https://www.nass.usda.gov/Publications/AgCensus/2017/Full_Report/Volume_1,_Chapter_1_US/usappxb.pdf")
 
+**Created table [MITERS].[NAICS8_v2017] to reflect the changes in the 2017 census data:**
+
+	df_naics = pd.DataFrame([['11133409','ARONIA BERRIES', '1'], ['11133410','ELDERBERRIES', '1'],['11133411','Raspberries', '1'],['95000000', 'CHERIMOYAS', '1'],['11113009', 'CHICKPEAS', '1']])
+ 
+![](https://www.dropbox.com/s/x33gfvq8r2p22ud/NAICS8_v2017.jpg)
 
 <span style="color:purple">**[COA95_10].[NAICS8]**:</span>
 
@@ -221,7 +226,7 @@ To update 2015 water use data, I need to create new NAICS8 to incorporate the ch
 
 
 
-<span style="color:purple">[USGS].[MITERS].[NAICS8_v2017] is used to further create the  [COA17].[NAICS8] table </span>
+<span style="color:purple">[USGS].[MITERS].[NAICS8_v2017] is used to create the  [COA17].[NAICS8] table </span>
 
 1. filters out the irrigated acreage records 
 2. integrate with NAICS8 information 
