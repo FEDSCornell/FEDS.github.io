@@ -1,5 +1,7 @@
 # 2015 Water Update
 
+
+
 This readme file is created to document the technical steps of updating data of 2015 water use by the U.S. food system. The Food Environment Data System (FEDS) team follows Sarah Rehkamp's[ documentation](https://cornell.box.com/s/s3cr4pnjvkuux7dfv01veogdojqxt8o0 "documentation") to update the water data with technical changes. 
 
 # <span style="color:blue">Step 1 & 2</span>
@@ -365,7 +367,10 @@ Table 36.csv is created using the R script: **FRIS_PDF_Scraping_Table_36_2020.R*
 
 # Questions:
 
+## Acres harvested vs acres grown 
+Berries are "BERRY TOTALS, IRRIGATED - ACRES GROWN". Is that okay?
 
+[https://www.dropbox.com/s/qq3xigqrzi1f25v/checkCommodity95_10.sql?dl=0](https://www.dropbox.com/s/qq3xigqrzi1f25v/checkCommodity95_10.sql?dl=0 "hay")
 
 <span style="color:red">NAICS8 </span>
 
@@ -464,6 +469,8 @@ download whole dataset
 
 https://www.nass.usda.gov/Quick_Stats/CDQT/chapter/2/table/32/state/AL/county/003/year/2017
 
+
 # Other resources
 
 [FEDS SQL Server Catalog](https://fedscornell.github.io/Food-Environment-Data-System/SQLServer/)
+
