@@ -13,3 +13,6 @@
 
 ## Water Use Update
 - [Water Use Update Readme file](WaterUseUpdate/Documentation/WaterUseUpdate.md)
+
+# Research
+[Trade Data](Research/TradeDataDocumentation.md)
