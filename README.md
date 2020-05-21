@@ -15,4 +15,5 @@
 - [Water Use Update Readme file](WaterUseUpdate/Documentation/WaterUseUpdate.md)
 
 # Research
-[Trade Data](Research/TradeDataDocumentation.md)
+## Trade Data
+- [Trade Data Documentation](Research/TradeDataDocumentation.md)
