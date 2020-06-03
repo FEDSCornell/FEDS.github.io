@@ -16,6 +16,24 @@
 		| 2016                      | 2012-2016 American Community Survey 5-Year Estimates |
 		| 2017                      | 2013-2017 American Community Survey 5-Year Estimates |
 
+## Age Cohort:
+
+| Age               	|
+|-------------------	|
+| Under 5 years     	|
+| 5 years           	|
+| 6 to 11 years     	|
+| 12 to 14 years    	|
+| 15 years          	|
+| 16 and 17 years   	|
+| 18 to 24 years    	|
+| 25 to 34 years    	|
+| 35 to 44 years    	|
+| 45 to 54 years    	|
+| 55 to 64 years    	|
+| 65 to 74 years    	|
+| 75 years and over 	|
+| NULL              	|
 
 ## Data Source:
 
