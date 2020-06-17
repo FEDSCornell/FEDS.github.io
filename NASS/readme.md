@@ -12,7 +12,9 @@
 
 ## Updates in April and May 2020
 1. Updated the source data of NASS survey crops on April 30, 2020
-2. Created indexed view [QSData].[NASS_QuickStats_Survey_Crops] 
+2. The [NASSQUICKSTATS_SourceData].[NASSQSFTP].[NASS_QuickStats_Crops] table is the original one, and [NASSQUICKSTATS_SourceData].[NASSQSFTP].[NASS_QuickStats_Crops_20200430] is the updated table. 
+3. I did not remove or change the [NASSQUICKSTATS_SourceData].[NASSQSFTP].[NASS_QuickStats_Crops] table in case some programs are using it. 
+4. Created indexed view [QSData].[NASS_QuickStats_Survey_Crops] 
 
 ## Caveat
 1. census2002, census2007, census2012, and census2017 tables are stacked into the census02_17 in our sql server. Then  [NASSQUICKSTATS].[QSData].[NASS_QuickStats_Census02_07] is renamed as  [NASSQUICKSTATS].[QSData].[NASS_QuickStats_Census] to make the previous queries run smoothly. 
