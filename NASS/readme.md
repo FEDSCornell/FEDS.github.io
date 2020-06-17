@@ -1,6 +1,19 @@
 
 # NASS QuickStats 
 
+## Updates in June 2020
+1. created the schema PM for produce models
+2. created an index view "[PM].[NASS_QuickStats_Survey_CropsSubset]" which is a subset of the crop view in order to remove some duplicates. These duplicates are not exactly duplicated with each other. The duplicates are mainly caused by Null fields. 
+	1. The [PM].[NASS_QuickStats_Survey_CropsSubset] view does not include [GROUP_DESC] = 'CROP TOTALS' , 'FIELD CROPS' or 'COMMODITIES'. 
+	2. It does not include almonds, apples and onions data. 
+	3. This view is mainly created for the fresh fruits and vegetables study.   
+3. Depending on the indexed view, we created views: PM.NassProduction, NassPrice and NassYield for the produce models.
+
+
+## Updates in April and May 2020
+1. Updated the source data of NASS survey crops on April 30, 2020
+2. Created indexed view [QSData].[NASS_QuickStats_Survey_Crops] 
+
 ## Caveat
 1. census2002, census2007, census2012, and census2017 tables are stacked into the census02_17 in our sql server. Then  [NASSQUICKSTATS].[QSData].[NASS_QuickStats_Census02_07] is renamed as  [NASSQUICKSTATS].[QSData].[NASS_QuickStats_Census] to make the previous queries run smoothly. 
 
@@ -8,7 +21,7 @@
 
 3. Views split the dynamic data files to census and survey tables (see next section for static and dynamic data files).
 4. [NASSQUICKSTATS_SourceData].[NASSQSFTP].[NASS_QuickStats_Demographics] only has [SOURCE_DESC]=CENSUS.
-5. 
+
 
 
 ## Description
@@ -52,6 +65,9 @@ Python code is developed for the ETL job:
 ## Updates
 1. fixed the digits
 2. added time stamps (python does the web scraping, parses out NASS update date, and saved the date in the field  [DownloadDate]. Our loading date is saved in the field of [LoadDate] in the [NASSQUICKSTATS_SourceData] DB. 
+3. create indexes for views
+	Problems: cannot create index if the view is not schema bound
+	Solutions: add schema binding
 
 ## To Do:
 [COUNTRY_CODE] is still 9000 instead of 99000.
