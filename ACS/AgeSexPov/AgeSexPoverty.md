@@ -1,6 +1,6 @@
 # American Community Survey (ACS) Population by Age by Sex by Poverty Level 
 
-## Update
+## Updates
 1. Recreated the AgeSexPov table because the previous sql table saved variables in varchar. The source table is stored as [SourceData].[acs].[AgeSexPov]. Earlier SQL table was deleted and replaced by the new one. 
 
 2. Created  [NHANES3].[acs].[AgeSexPov_Adjusted] to match with [NHANES3].[LUT].[COHORTS_AGESEXPOV]
