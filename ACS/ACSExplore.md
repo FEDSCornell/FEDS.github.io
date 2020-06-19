@@ -1,6 +1,23 @@
+NHANES:
 
+[https://wwwn.cdc.gov/nchs/nhanes/Search/DataPage.aspx?Component=Demographics&CycleBeginYear=2015](https://wwwn.cdc.gov/nchs/nhanes/Search/DataPage.aspx?Component=Demographics&CycleBeginYear=2015 "https://wwwn.cdc.gov/nchs/nhanes/Search/DataPage.aspx?Component=Demographics&CycleBeginYear=2015")
 
+https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar19.pdf
 
+ACS:
+
+B17001	POVERTY STATUS IN THE PAST 12 MONTHS BY SEX BY AGE
+
+Total family income
+A ratio of family income to poverty guidelines.
+
+[https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?src=bkmk](https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?src=bkmk "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?src=bkmk")
+
+children:
+
+[https://opportunityinsights.org/data/](https://opportunityinsights.org/data/ "https://opportunityinsights.org/data/")
+
+readme: [https://opportunityinsights.org/wp-content/uploads/2019/07/Codebook-for-Table-5.pdf](https://opportunityinsights.org/wp-content/uploads/2019/07/Codebook-for-Table-5.pdf "https://opportunityinsights.org/wp-content/uploads/2019/07/Codebook-for-Table-5.pdf")
 
 # American Community Survey (ACS)
 
