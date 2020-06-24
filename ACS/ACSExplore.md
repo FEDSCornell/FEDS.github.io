@@ -1,12 +1,32 @@
-NHANES:
+## NHANES:
 
 [https://wwwn.cdc.gov/nchs/nhanes/Search/DataPage.aspx?Component=Demographics&CycleBeginYear=2015](https://wwwn.cdc.gov/nchs/nhanes/Search/DataPage.aspx?Component=Demographics&CycleBeginYear=2015 "https://wwwn.cdc.gov/nchs/nhanes/Search/DataPage.aspx?Component=Demographics&CycleBeginYear=2015")
 
 https://www2.census.gov/programs-surveys/cps/techdocs/cpsmar19.pdf
 
-ACS:
+## ACS:
+
+at the state level:
+[C17001 POVERTY STATUS IN THE PAST 12 MONTHS BY SEX BY AGE at the state level](https://data.census.gov/cedsci/table?q=age%20sex%20poverty&hidePreview=false&tid=ACSDT1Y2017.C17001&t=Age%20and%20Sex%3APoverty&g=0100000US.04000.001&vintage=2018)
+
+C17024 AGE BY RATIO OF INCOME TO POVERTY LEVEL IN THE PAST 12 MONTHS at the state level
+
+PCT76  POVERTY STATUS IN 2009 OF UNRELATED INDIVIDUALS 15 YEARS AND OVER BY SEX BY AGE 
+
+[B17003 POVERTY STATUS IN THE PAST 12 MONTHS OF INDIVIDUALS BY SEX BY EDUCATIONAL ATTAINMENT at the state level](https://data.census.gov/cedsci/table?q=age%20sex%20poverty&hidePreview=false&tid=ACSDT1Y2018.B17003&t=Age%20and%20Sex%3APoverty&g=0100000US.04000.001&vintage=2018)
+
+[B17005 POVERTY STATUS IN THE PAST 12 MONTHS OF INDIVIDUALS BY SEX BY EMPLOYMENT STATUS at the state level](https://data.census.gov/cedsci/table?q=age%20sex%20poverty&hidePreview=false&tid=ACSDT1Y2018.B17005&t=Age%20and%20Sex%3APoverty&g=0100000US.04000.001&vintage=2018)
+
+B17024 AGE BY RATIO OF INCOME TO POVERTY LEVEL IN THE PAST 12 MONTHS
+
+B17020 POVERTY STATUS IN THE PAST 12 MONTHS BY AGE at the state level
+
 
 B17001	POVERTY STATUS IN THE PAST 12 MONTHS BY SEX BY AGE
+
+
+
+
 
 Total family income
 A ratio of family income to poverty guidelines.

@@ -5,16 +5,16 @@
 
 2. Created  [NHANES3].[acs].[AgeSexPov_Adjusted] to match with [NHANES3].[LUT].[COHORTS_AGESEXPOV]
 
-3. created a lookup table for the adjusted table:  [NHANES3].[acs].[AgeSexPov_Adjusted]
+3. Created a lookup table for the adjusted table:  [NHANES3].[acs].[AgeSexPov_Adjusted]
 
-## Older Version
+4. Added 2018 5-year survey data
+
+## Descriptions of the SQL Tables 
+
+- The SQL table **[ACS].[AgeSexPov_5Years]** contains population data by Age by Sex by Poverty Level at the county level. It is created based on ACS B17001 5-year survey data.
 
 
-- The SQL table **[acs].[AgeSexPov]** contains population data by Age by Sex by Poverty Level at the county level. It is created based on ACS B17001 table.
-
-- The SQL table **[acsLookup].[AgeSexPov]** is the lookup table of the [acs].[AgeSexPov] table. The description of each column names is also available in the "Variable Descriptions" section of this document. 
-
-- The SQL table **[acs].[AgeSexPov]** includes data in years 2012 - 2017. Each year's data were downloaded form [U.S. Census Bureau](https://data.census.gov/cedsci/ "U.S. Census Bureau"):
+- The SQL table **[ACS].[AgeSexPov_5Years]** includes data in years 2012 - 2018. Each year's data were downloaded form [U.S. Census Bureau](https://data.census.gov/cedsci/ "U.S. Census Bureau"):
 
 			
 		| Year in [acs].[AgeSexPov] | American Community Survey 5-Year Estimates           |
@@ -25,8 +25,20 @@
 		| 2015                      | 2011-2015 American Community Survey 5-Year Estimates |
 		| 2016                      | 2012-2016 American Community Survey 5-Year Estimates |
 		| 2017                      | 2013-2017 American Community Survey 5-Year Estimates |
+		| 2018                      | 2014-2018 American Community Survey 5-Year Estimates |
 
-## Age Cohort:
+
+**ACS 5-year estimates are based on data collected from 2011–2015 should not be labeled “2013,” even though that is the midpoint of the 5-year period. [https://www.census.gov/content/dam/Census/library/publications/2018/acs/acs_general_handbook_2018_ch03.pdf](https://www.census.gov/content/dam/Census/library/publications/2018/acs/acs_general_handbook_2018_ch03.pdf). **
+
+
+- The SQL table **[ACS].[AgeSexPov_1Year]** contains population data by Age by Sex by Poverty Level at the county level. It is created based on ACS B17001 1-year survey data.
+
+- [**acs].[AgeSexPov_1Year]** and **[acs].[AgeSexPov_5Years]** indexed SQL views are created to match with the NHANES cohorts. Indexes are created to improve the performance. 
+
+- The SQL table **[LUT].[AgeSexPov]** is the lookup table of the acs SQL tables and views. The description of each column names is also available in the "Variable Descriptions" section of this document. 
+
+
+-  The Original Age Cohorts:
 
 | Age               	|
 |-------------------	|
@@ -44,6 +56,9 @@
 | 65 to 74 years    	|
 | 75 years and over 	|
 | NULL              	|
+
+
+
 
 ## Data Source:
 
@@ -97,124 +112,140 @@
 
 ## Variable Descriptions
 
-| GEO_ID      | Measure              | Level | Income                                                 | Sex    | Age               |
-|-------------|----------------------|-------|--------------------------------------------------------|--------|-------------------|
-| NAME        | Geographic Area Name |       |                                                        |        |                   |
-| B17001_001E | Estimate             | Total |                                                        |        |                   |
-| B17001_001M | Margin of Error      | Total |                                                        |        |                   |
-| B17001_002E | Estimate             | Total | Income in the past 12 months below poverty level       |        |                   |
-| B17001_002M | Margin of Error      | Total | Income in the past 12 months below poverty level       |        |                   |
-| B17001_003E | Estimate             | Total | Income in the past 12 months below poverty level       | Male   |                   |
-| B17001_003M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   |                   |
-| B17001_004E | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | Under 5 years     |
-| B17001_004M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | Under 5 years     |
-| B17001_005E | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 5 years           |
-| B17001_005M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 5 years           |
-| B17001_006E | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 6 to 11 years     |
-| B17001_006M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 6 to 11 years     |
-| B17001_007E | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 12 to 14 years    |
-| B17001_007M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 12 to 14 years    |
-| B17001_008E | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 15 years          |
-| B17001_008M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 15 years          |
-| B17001_009E | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 16 and 17 years   |
-| B17001_009M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 16 and 17 years   |
-| B17001_010E | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 18 to 24 years    |
-| B17001_010M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 18 to 24 years    |
-| B17001_011E | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 25 to 34 years    |
-| B17001_011M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 25 to 34 years    |
-| B17001_012E | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 35 to 44 years    |
-| B17001_012M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 35 to 44 years    |
-| B17001_013E | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 45 to 54 years    |
-| B17001_013M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 45 to 54 years    |
-| B17001_014E | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 55 to 64 years    |
-| B17001_014M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 55 to 64 years    |
-| B17001_015E | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 65 to 74 years    |
-| B17001_015M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 65 to 74 years    |
-| B17001_016E | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 75 years and over |
-| B17001_016M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 75 years and over |
-| B17001_017E | Estimate             | Total | Income in the past 12 months below poverty level       | Female |                   |
-| B17001_017M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female |                   |
-| B17001_018E | Estimate             | Total | Income in the past 12 months below poverty level       | Female | Under 5 years     |
-| B17001_018M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | Under 5 years     |
-| B17001_019E | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 5 years           |
-| B17001_019M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 5 years           |
-| B17001_020E | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 6 to 11 years     |
-| B17001_020M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 6 to 11 years     |
-| B17001_021E | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 12 to 14 years    |
-| B17001_021M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 12 to 14 years    |
-| B17001_022E | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 15 years          |
-| B17001_022M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 15 years          |
-| B17001_023E | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 16 and 17 years   |
-| B17001_023M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 16 and 17 years   |
-| B17001_024E | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 18 to 24 years    |
-| B17001_024M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 18 to 24 years    |
-| B17001_025E | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 25 to 34 years    |
-| B17001_025M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 25 to 34 years    |
-| B17001_026E | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 35 to 44 years    |
-| B17001_026M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 35 to 44 years    |
-| B17001_027E | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 45 to 54 years    |
-| B17001_027M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 45 to 54 years    |
-| B17001_028E | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 55 to 64 years    |
-| B17001_028M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 55 to 64 years    |
-| B17001_029E | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 65 to 74 years    |
-| B17001_029M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 65 to 74 years    |
-| B17001_030E | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 75 years and over |
-| B17001_030M | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 75 years and over |
-| B17001_031E | Estimate             | Total | Income in the past 12 months at or above poverty level |        |                   |
-| B17001_031M | Margin of Error      | Total | Income in the past 12 months at or above poverty level |        |                   |
-| B17001_032E | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   |                   |
-| B17001_032M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   |                   |
-| B17001_033E | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | Under 5 years     |
-| B17001_033M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | Under 5 years     |
-| B17001_034E | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 5 years           |
-| B17001_034M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 5 years           |
-| B17001_035E | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 6 to 11 years     |
-| B17001_035M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 6 to 11 years     |
-| B17001_036E | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 12 to 14 years    |
-| B17001_036M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 12 to 14 years    |
-| B17001_037E | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 15 years          |
-| B17001_037M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 15 years          |
-| B17001_038E | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 16 and 17 years   |
-| B17001_038M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 16 and 17 years   |
-| B17001_039E | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 18 to 24 years    |
-| B17001_039M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 18 to 24 years    |
-| B17001_040E | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 25 to 34 years    |
-| B17001_040M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 25 to 34 years    |
-| B17001_041E | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 35 to 44 years    |
-| B17001_041M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 35 to 44 years    |
-| B17001_042E | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 45 to 54 years    |
-| B17001_042M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 45 to 54 years    |
-| B17001_043E | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 55 to 64 years    |
-| B17001_043M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 55 to 64 years    |
-| B17001_044E | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 65 to 74 years    |
-| B17001_044M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 65 to 74 years    |
-| B17001_045E | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 75 years and over |
-| B17001_045M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 75 years and over |
-| B17001_046E | Estimate             | Total | Income in the past 12 months at or above poverty level | Female |                   |
-| B17001_046M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female |                   |
-| B17001_047E | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | Under 5 years     |
-| B17001_047M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | Under 5 years     |
-| B17001_048E | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 5 years           |
-| B17001_048M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 5 years           |
-| B17001_049E | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 6 to 11 years     |
-| B17001_049M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 6 to 11 years     |
-| B17001_050E | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 12 to 14 years    |
-| B17001_050M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 12 to 14 years    |
-| B17001_051E | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 15 years          |
-| B17001_051M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 15 years          |
-| B17001_052E | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 16 and 17 years   |
-| B17001_052M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 16 and 17 years   |
-| B17001_053E | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 18 to 24 years    |
-| B17001_053M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 18 to 24 years    |
-| B17001_054E | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 25 to 34 years    |
-| B17001_054M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 25 to 34 years    |
-| B17001_055E | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 35 to 44 years    |
-| B17001_055M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 35 to 44 years    |
-| B17001_056E | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 45 to 54 years    |
-| B17001_056M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 45 to 54 years    |
-| B17001_057E | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 55 to 64 years    |
-| B17001_057M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 55 to 64 years    |
-| B17001_058E | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 65 to 74 years    |
-| B17001_058M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 65 to 74 years    |
-| B17001_059E | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 75 years and over |
-| B17001_059M | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 75 years and over |
+| GEO_ID              | Measure              | Level | Income                                                 | Sex    | Age               |
+|---------------------|----------------------|-------|--------------------------------------------------------|--------|-------------------|
+| GEO_ID              | Geographic Area Name | NULL  | NULL                                                   | NULL   | NULL              |
+| B17001_001E         | Estimate             | Total | NULL                                                   | NULL   | NULL              |
+| B17001_001M         | Margin of Error      | Total | NULL                                                   | NULL   | NULL              |
+| B17001_002E         | Estimate             | Total | Income in the past 12 months below poverty level       | NULL   | NULL              |
+| B17001_002M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | NULL   | NULL              |
+| B17001_003E         | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | NULL              |
+| B17001_003M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | NULL              |
+| B17001_004E         | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | Under 5 years     |
+| B17001_004M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | Under 5 years     |
+| B17001_005E         | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 5 years           |
+| B17001_005M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 5 years           |
+| B17001_006E         | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 6 to 11 years     |
+| B17001_006M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 6 to 11 years     |
+| B17001_007E         | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 12 to 14 years    |
+| B17001_007M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 12 to 14 years    |
+| B17001_008E         | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 15 years          |
+| B17001_008M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 15 years          |
+| B17001_009E         | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 16 and 17 years   |
+| B17001_009M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 16 and 17 years   |
+| B17001_010E         | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 18 to 24 years    |
+| B17001_010M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 18 to 24 years    |
+| B17001_011E         | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 25 to 34 years    |
+| B17001_011M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 25 to 34 years    |
+| B17001_012E         | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 35 to 44 years    |
+| B17001_012M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 35 to 44 years    |
+| B17001_013E         | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 45 to 54 years    |
+| B17001_013M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 45 to 54 years    |
+| B17001_014E         | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 55 to 64 years    |
+| B17001_014M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 55 to 64 years    |
+| B17001_015E         | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 65 to 74 years    |
+| B17001_015M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 65 to 74 years    |
+| B17001_016E         | Estimate             | Total | Income in the past 12 months below poverty level       | Male   | 75 years and over |
+| B17001_016M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Male   | 75 years and over |
+| B17001_017E         | Estimate             | Total | Income in the past 12 months below poverty level       | Female | NULL              |
+| B17001_017M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | NULL              |
+| B17001_018E         | Estimate             | Total | Income in the past 12 months below poverty level       | Female | Under 5 years     |
+| B17001_018M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | Under 5 years     |
+| B17001_019E         | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 5 years           |
+| B17001_019M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 5 years           |
+| B17001_020E         | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 6 to 11 years     |
+| B17001_020M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 6 to 11 years     |
+| B17001_021E         | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 12 to 14 years    |
+| B17001_021M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 12 to 14 years    |
+| B17001_022E         | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 15 years          |
+| B17001_022M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 15 years          |
+| B17001_023E         | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 16 and 17 years   |
+| B17001_023M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 16 and 17 years   |
+| B17001_024E         | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 18 to 24 years    |
+| B17001_024M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 18 to 24 years    |
+| B17001_025E         | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 25 to 34 years    |
+| B17001_025M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 25 to 34 years    |
+| B17001_026E         | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 35 to 44 years    |
+| B17001_026M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 35 to 44 years    |
+| B17001_027E         | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 45 to 54 years    |
+| B17001_027M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 45 to 54 years    |
+| B17001_028E         | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 55 to 64 years    |
+| B17001_028M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 55 to 64 years    |
+| B17001_029E         | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 65 to 74 years    |
+| B17001_029M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 65 to 74 years    |
+| B17001_030E         | Estimate             | Total | Income in the past 12 months below poverty level       | Female | 75 years and over |
+| B17001_030M         | Margin of Error      | Total | Income in the past 12 months below poverty level       | Female | 75 years and over |
+| B17001_031E         | Estimate             | Total | Income in the past 12 months at or above poverty level | NULL   | NULL              |
+| B17001_031M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | NULL   | NULL              |
+| B17001_032E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | NULL              |
+| B17001_032M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | NULL              |
+| B17001_033E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | Under 5 years     |
+| B17001_033M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | Under 5 years     |
+| B17001_034E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 5 years           |
+| B17001_034M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 5 years           |
+| B17001_035E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 6 to 11 years     |
+| B17001_035M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 6 to 11 years     |
+| B17001_036E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 12 to 14 years    |
+| B17001_036M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 12 to 14 years    |
+| B17001_037E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 15 years          |
+| B17001_037M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 15 years          |
+| B17001_038E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 16 and 17 years   |
+| B17001_038M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 16 and 17 years   |
+| B17001_039E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 18 to 24 years    |
+| B17001_039M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 18 to 24 years    |
+| B17001_040E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 25 to 34 years    |
+| B17001_040M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 25 to 34 years    |
+| B17001_041E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 35 to 44 years    |
+| B17001_041M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 35 to 44 years    |
+| B17001_042E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 45 to 54 years    |
+| B17001_042M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 45 to 54 years    |
+| B17001_043E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 55 to 64 years    |
+| B17001_043M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 55 to 64 years    |
+| B17001_044E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 65 to 74 years    |
+| B17001_044M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 65 to 74 years    |
+| B17001_045E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Male   | 75 years and over |
+| B17001_045M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Male   | 75 years and over |
+| B17001_046E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | NULL              |
+| B17001_046M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | NULL              |
+| B17001_047E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | Under 5 years     |
+| B17001_047M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | Under 5 years     |
+| B17001_048E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 5 years           |
+| B17001_048M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 5 years           |
+| B17001_049E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 6 to 11 years     |
+| B17001_049M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 6 to 11 years     |
+| B17001_050E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 12 to 14 years    |
+| B17001_050M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 12 to 14 years    |
+| B17001_051E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 15 years          |
+| B17001_051M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 15 years          |
+| B17001_052E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 16 and 17 years   |
+| B17001_052M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 16 and 17 years   |
+| B17001_053E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 18 to 24 years    |
+| B17001_053M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 18 to 24 years    |
+| B17001_054E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 25 to 34 years    |
+| B17001_054M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 25 to 34 years    |
+| B17001_055E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 35 to 44 years    |
+| B17001_055M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 35 to 44 years    |
+| B17001_056E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 45 to 54 years    |
+| B17001_056M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 45 to 54 years    |
+| B17001_057E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 55 to 64 years    |
+| B17001_057M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 55 to 64 years    |
+| B17001_058E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 65 to 74 years    |
+| B17001_058M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 65 to 74 years    |
+| B17001_059E         | Estimate             | Total | Income in the past 12 months at or above poverty level | Female | 75 years and over |
+| B17001_059M         | Margin of Error      | Total | Income in the past 12 months at or above poverty level | Female | 75 years and over |
+| Male_5AndBelow_b    | Calculated           | Total | Income in the past 12 months below poverty level       | Male   | 5 and below       |
+| Male_5AndBelow_a    | Calculated           | Total | Income in the past 12 months at or above poverty level | Male   | 5 and below       |
+| Female_5AndBelow_b  | Calculated           | Total | Income in the past 12 months below poverty level       | Female | 5 and below       |
+| Female_5AndBelow_a  | Calculated           | Total | Income in the past 12 months at or above poverty level | Female | 5 and below       |
+| Male_12_17_b        | Calculated           | Total | Income in the past 12 months below poverty level       | Male   | 12 to 17 years    |
+| Male_12_17_a        | Calculated           | Total | Income in the past 12 months at or above poverty level | Male   | 12 to 17 years    |
+| Male_25_44_b        | Calculated           | Total | Income in the past 12 months below poverty level       | Male   | 25 to 44 years    |
+| Male_25_44_a        | Calculated           | Total | Income in the past 12 months at or above poverty level | Male   | 25 to 44 years    |
+| Male_65AndAbove_b   | Calculated           | Total | Income in the past 12 months below poverty level       | Male   | 65 and above      |
+| Male_65AndAbove_a   | Calculated           | Total | Income in the past 12 months at or above poverty level | Male   | 65 and above      |
+| Female_12_17_b      | Calculated           | Total | Income in the past 12 months below poverty level       | Female | 12 to 17 years    |
+| Female_12_17_a      | Calculated           | Total | Income in the past 12 months at or above poverty level | Female | 12 to 17 years    |
+| Female_25_44_b      | Calculated           | Total | Income in the past 12 months below poverty level       | Female | 25 to 44 years    |
+| Female_25_44_a      | Calculated           | Total | Income in the past 12 months at or above poverty level | Female | 25 to 44 years    |
+| Female_65AndAbove_b | Calculated           | Total | Income in the past 12 months below poverty level       | Female | 65 and above      |
+| Female_65AndAbove_b | Calculated           | Total | Income in the past 12 months at or above poverty level | Female | 65 and above      |
