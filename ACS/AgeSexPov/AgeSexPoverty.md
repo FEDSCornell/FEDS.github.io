@@ -12,7 +12,8 @@
 
 4.	Regarding the time period, the official document mentioned:” In the case of ACS 1-year estimates, the period is the calendar year (e.g., the 2015 ACS covers the period from January 2015 through December 2015). In the case of ACS multiyear estimates, the period is 5 calendar years (e.g., the 2011–2015 ACS estimates cover the period from January 2011 through December 2015). Therefore, ACS estimates based on data collected from 2011–2015 should not be labeled “2013,” even though that is the midpoint of the 5-year period. https://www.census.gov/content/dam/Census/library/publications/2018/acs/acs_general_handbook_2018_ch03.pdf. 
 
-5.	BTW, the B17001 table is called “POVERTY STATUS IN THE PAST 12 MONTHS BY SEX BY AGE” no matter it is based on one year
+5.	BTW, the B17001 table is called “POVERTY STATUS IN THE PAST 12 MONTHS BY SEX BY AGE” 
+
 6.	At the state level (C17001 table): age groups are aggregated to: under 18 years, 18 to 64 years, and 65 years and over. Data can be found at: 
 https://data.census.gov/cedsci/table?q=age%20sex%20poverty&hidePreview=true&tid=ACSDT1Y2010.C17001&t=Age%20and%20Sex%3APoverty&g=0100000US.04000.001&vintage=2010
 
