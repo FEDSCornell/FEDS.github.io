@@ -1,5 +1,19 @@
 # American Community Survey (ACS) Population by Age by Sex by Poverty Level 
 
+
+----------
+
+## Executive Summary
+
+1.	Our population data are scraped from ACS B17001 tables. There are both 1-year and 5-year B17001 tables from 2010 through 2018 (https://data.census.gov/cedsci/table?g=0500000US10001&hidePreview=true&tid=ACSDT5Y2018.B17001&vintage=2018). 
+
+2.	Each 1-year B17001 table has about 833 county-level observations. So there are about a handful observations at the county-level of each state. 
+
+3.	The 5-year B17001 table has about 3223 county-level observations. Population data from both 1-year and 5-years survey have been loaded into our server as [NHANES3].[acs].[AgeSexPov_5Years] and [NHANES3].[acs].[AgeSexPov_1Year]. Views are created based on the source data to match with NHANES cohorts. 
+
+4.	Regarding the time period, the official document mentioned:” In the case of ACS 1-year estimates, the period is the calendar year (e.g., the 2015 ACS covers the period from January 2015 through December 2015). In the case of ACS multiyear estimates, the period is 5 calendar years (e.g., the 2011–2015 ACS estimates cover the period from January 2011 through December 2015). Therefore, ACS estimates based on data collected from 2011–2015 should not be labeled “2013,” even though that is the midpoint of the 5-year period. https://www.census.gov/content/dam/Census/library/publications/2018/acs/acs_general_handbook_2018_ch03.pdf. 
+
+
 ## Updates
 1. Recreated the AgeSexPov table because the previous sql table saved variables in varchar. The source table is stored as [SourceData].[acs].[AgeSexPov]. Earlier SQL table was deleted and replaced by the new one. 
 
