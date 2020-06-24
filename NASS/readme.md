@@ -9,6 +9,8 @@
 	3. This view is mainly created for the fresh fruits and vegetables study.   
 3. Depending on the indexed view, we created views: PM.NassProduction, NassPrice and NassYield for the produce models.
 
+4. The [NASSQUICKSTATS_SourceData].[LUT].[NassNaics8] SQL table is created by the python script: ProductionUpdate2012_2019.py to show the link between NASS data and NAICS8 data. 
+5. The NassNaics8 and the production, price and yield views are used to create annual production, price and yield views.
 
 ## Updates in April and May 2020
 1. Updated the source data of NASS survey crops on April 30, 2020
