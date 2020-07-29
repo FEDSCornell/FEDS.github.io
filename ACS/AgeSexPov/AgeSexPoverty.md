@@ -1,5 +1,19 @@
 # American Community Survey (ACS) Population by Age by Sex by Poverty Level 
 
+# 
+
+## Updates:
+
+- Final ACS tables and views were moved to the NHANES3 DB.
+ 
+- To match with  [NHANES3].[LUT].[COHORTS_AGESEX]:
+	- We created: view [acs].[AgeSex_5YearAdjusted]: population by sex by age at the county level based on the previous by sex by age by poverty data.
+	- It's lookup table of the view [acs].[AgeSex_5YearAdjusted]:[LUT].[ACS_Age_Sex] 
+	- The [NHANES3].[acs].[AgeSexPov_5Years] and [NHANES3].[acs].[AgeSexPov_1Year] are the original source data.
+	- Views with schema acs are created based on the source tables to match with the NHANES data.
+	
+
+--> will delete the current ACS DB since we can keep data in the NHANES3 DB to keep the server clean. 
 
 ----------
 
